@@ -1,0 +1,228 @@
+<html>
+
+<head>
+	<title>Krov Complexo</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<h1>Krov Complexo</h1>
+	<div class="box">
+		<div class="foodbars">
+			<h3>Calculadora</h3>
+			<div class="food1">
+				<div class="namefood">
+					<label>Kit Reparo:</label>
+				</div>
+				<div class="buttonsbars">
+					<input type="number" name="kitreparo" id="kitreparo" value="0"
+						oninput="somaTotal()">
+					<button onclick="somaUmkitreparo()">+1</button>
+					<button onclick="somaCincokitreparo()">+5</button>
+					<button onclick="zerakitreparo()">Zerar</button>
+				</div>
+			</div>
+			<div class="food2">
+				<div class="buttonsbars">
+					<div class="namefood">
+						<label>Pneu:</label>
+					</div>
+					<input type="number" name="pneu" id="pneu" value="0" oninput="somaTotal()">
+					<button onclick="somaUmpneu()">+1</button>
+					<button onclick="somaCincopneu()">+5</button>
+					<button onclick="zerapneu()">Zerar</button>
+				</div>
+			</div>
+			<div class="food3">
+				<div class="buttonsbars">
+					<div class="namefood">
+						<label>Pé de Cabra:</label>
+					</div>
+					<input type="number" name="pedecabra" id="pedecabra" value="0" oninput="somaTotal()">
+					<button onclick="somaUmpedecabra()">+1</button>
+					<button onclick="somaCincopedecabra()">+5</button>
+					<button onclick="zerapedecabra()">Zerar</button>
+				</div>
+			</div>
+			<div class="food4">
+				<div class="buttonsbars">
+					<div class="namefood">
+						<label>Chave Inglesa:</label>
+					</div>
+					<input type="number" name="chaveinglesa" id="chaveinglesa" value="0" oninput="somaTotal()">
+					<button onclick="somaUmchaveinglesa()">+1</button>
+					<button onclick="somaCincochaveinglesa()">+5</button>
+					<button onclick="zerachaveinglesa()">Zerar</button>
+				</div>
+			</div>
+			<div class="food5">
+				<div class="buttonsbars">
+					<div class="namefood">
+						<label>Rastreador:</label>
+					</div>
+					<input type="number" name="rastreadordesinal" id="rastreadordesinal" value="0" oninput="somaTotal()">
+					<button onclick="somaUmrastreadordesinal()">+1</button>
+					<button onclick="somaCincorastreadordesinal()">+5</button>
+					<button onclick="zerarastreadordesinal()">Zerar</button>
+				</div>
+			</div>
+			<div class="food6">
+				<div class="buttonsbars">
+					<div class="namefood">
+						<label>Deslocamento:</label>
+					</div>
+					<input type="number" name="deslocamento" id="deslocamento" value="0" oninput="somaTotal()">
+					<button onclick="somaUmdeslocamento()">+1</button>
+					<button onclick="somaCincodeslocamento()">+5</button>
+					<button onclick="zeradeslocamento()">Zerar</button>
+				</div>
+			</div>
+
+
+			<div class="whiteinfos">
+				<h2><label id="total">Valor a cobrar do cliente: $ 0.0</label></h2>
+				<h2><label id="totalcusto">Custo total: $ 0.0</label></h2>
+				<h2><label id="totalLucro">Valor meu lucro: $ 0.0</label></h2>
+			</div>
+			<div class="btns-info">
+				<button onclick="salvarVenda()">Salvar venda</button>
+			</div>
+		</div>
+		<div class="textarea">
+			<h3>Relatório de Vendas</h3>
+			<textarea id="relatorio" rows="21" cols="50"></textarea>
+			<br>
+			<div class="btns-info">
+				<button onclick="resetar()">Resetar relatório</button>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	var kitreparos = 0;
+	var pneus = 0;
+	var pedecabras = 0;
+	var chaveinglesas = 0;
+	var rastreadordesinals = 0;
+	var deslocamentos = 0;
+	var total = 0;
+	var totalLucro = 0;
+	var totalcusto = 0;
+	var totalSalvo = 0;
+	var totalcustoSalvo = 0;
+
+	function somaTotal() {
+		total = document.getElementById("kitreparo").value * 500.0;
+		total += document.getElementById("pneu").value * 275.0;
+		total += document.getElementById("pedecabra").value * 975.0;
+		total += document.getElementById("chaveinglesa").value * 975.0;
+		total += document.getElementById("rastreadordesinal").value * 775.0;
+		total += document.getElementById("deslocamento").value * 500.0;
+		total = Math.round(total * 100) / 100;
+		document.getElementById("total").textContent = "Valor a cobrar do cliente: $ " + total;
+		totalcusto = document.getElementById("kitreparo").value * 275.0
+		totalcusto += document.getElementById("pneu").value * 125.0;
+		totalcusto += document.getElementById("pedecabra").value * 725.0;
+		totalcusto += document.getElementById("chaveinglesa").value * 725.0;
+		totalcusto += document.getElementById("rastreadordesinal").value * 275.0;
+		totalcusto += document.getElementById("deslocamento").value * 0.0;
+		totalcusto = Math.round(totalcusto * 100) / 100;
+		document.getElementById("totalcusto").textContent = "Custo total: $ " + totalcusto;
+		totalLucro = document.getElementById("kitreparo").value * 225.0;
+		totalLucro += document.getElementById("pneu").value * 150.0;
+		totalLucro += document.getElementById("pedecabra").value * 250.0;
+		totalLucro += document.getElementById("chaveinglesa").value * 250.0;
+		totalLucro += document.getElementById("rastreadordesinal").value * 500.0;
+		totalLucro += document.getElementById("deslocamento").value * 500.0;
+		totalLucro = Math.round(totalLucro * 100) / 100;
+		document.getElementById("totalLucro").textContent = "Valor meu lucro: $ " + totalLucro;
+	}
+
+	relatorio();
+
+	function salvarVenda() {
+		kitreparos += parseInt(document.getElementById("kitreparo").value);
+		pneus += parseInt(document.getElementById("pneu").value);
+		pedecabras += parseInt(document.getElementById("pedecabra").value);
+		chaveinglesas += parseInt(document.getElementById("chaveinglesa").value);
+		rastreadordesinals += parseInt(document.getElementById("rastreadordesinal").value);
+		deslocamentos += parseInt(document.getElementById("deslocamento").value);
+		totalcustoSalvo += totalcusto;
+		totalSalvo += total;
+		totalcusto = 0;
+		total = 0;
+		relatorio();
+	}
+
+
+
+	function relatorio() {
+		document.getElementById("kitreparo").value = 0;
+		document.getElementById("pneu").value = 0;
+		document.getElementById("pedecabra").value = 0;
+		document.getElementById("chaveinglesa").value = 0;
+		document.getElementById("rastreadordesinal").value = 0;
+		document.getElementById("deslocamento").value = 0;
+		somaTotal();
+		var texto = "";
+		texto += "Vendido até o momento: \n";
+		texto += "\n- kitreparos: " + kitreparos;
+		texto += "\n- pneus: " + pneus;
+		texto += "\n- pedecabras: " + pedecabras;
+		texto += "\n- chaveinglesas: " + chaveinglesas;
+		texto += "\n- rastreadordesinals: " + rastreadordesinals;
+		texto += "\n- deslocamentos: " + deslocamentos;
+
+
+		var saldo = Math.round((totalSalvo - totalcustoSalvo) * 100) / 100;
+		var saldo1 = Math.round(totalSalvo * 100) / 100;
+		var saldo2 = Math.round(totalcustoSalvo * 100) / 100;
+		var saldo4 = Math.round((saldo2) * 100) / 100;
+		var saldo5 = Math.round((saldo) * 100) / 100;
+		var saldo6 = Math.round((saldo) * 100) / 100;
+		
+		texto += "\n\n+ Vendi um total de $ " + saldo1;
+		texto += "\n+ Meu lucro até o momento foi de $ " + saldo6;
+
+		texto += "\n\n+ Ficarei com $ " + saldo5;
+		texto += "\n+ Meu custo total $ " + saldo4;
+		document.getElementById("relatorio").value = texto;
+	}
+
+	function resetar() {
+		kitreparos = 0;
+		pneus = 0;
+		pedecabras = 0;
+		chaveinglesas = 0;
+		rastreadordesinals = 0;
+		total = 0;
+		totalLucro = 0;
+		totalcusto = 0;
+		totalSalvo = 0;
+		totalcustoSalvo = 0;
+		somaTotal();
+		relatorio();
+	}
+
+	function copiar() { navigator.clipboard.writeText(document.getElementById("relatorio").value); }
+	function somaUmkitreparo() { document.getElementById("kitreparo").value = parseInt(document.getElementById("kitreparo").value) + 1; somaTotal(); }
+	function somaCincokitreparo() { document.getElementById("kitreparo").value = parseInt(document.getElementById("kitreparo").value) + 5; somaTotal(); }
+	function somaUmpneu() { document.getElementById("pneu").value = parseInt(document.getElementById("pneu").value) + 1; somaTotal(); }
+	function somaCincopneu() { document.getElementById("pneu").value = parseInt(document.getElementById("pneu").value) + 5; somaTotal(); }
+	function somaUmpedecabra() { document.getElementById("pedecabra").value = parseInt(document.getElementById("pedecabra").value) + 1; somaTotal(); }
+	function somaCincopedecabra() { document.getElementById("pedecabra").value = parseInt(document.getElementById("pedecabra").value) + 5; somaTotal(); }
+	function somaUmchaveinglesa() { document.getElementById("chaveinglesa").value = parseInt(document.getElementById("chaveinglesa").value) + 1; somaTotal(); }
+	function somaCincochaveinglesa() { document.getElementById("chaveinglesa").value = parseInt(document.getElementById("chaveinglesa").value) + 5; somaTotal(); }
+	function somaUmrastreadordesinal() { document.getElementById("rastreadordesinal").value = parseInt(document.getElementById("rastreadordesinal").value) + 1; somaTotal(); }
+	function somaCincorastreadordesinal() { document.getElementById("rastreadordesinal").value = parseInt(document.getElementById("rastreadordesinal").value) + 5; somaTotal(); }
+	function somaUmdeslocamento() { document.getElementById("deslocamento").value = parseInt(document.getElementById("deslocamento").value) + 1; somaTotal(); }
+	function somaCincodeslocamento() { document.getElementById("deslocamento").value = parseInt(document.getElementById("deslocamento").value) + 5; somaTotal(); }
+	function zerakitreparo() { document.getElementById("kitreparo").value = 0; somaTotal(); }
+	function zerapneu() { document.getElementById("pneu").value = 0; somaTotal(); }
+	function zerapedecabra() { document.getElementById("pedecabra").value = 0; somaTotal(); }
+	function zerachaveinglesa() { document.getElementById("chaveinglesa").value = 0; somaTotal(); }
+	function zerarastreadordesinal() { document.getElementById("rastreadordesinal").value = 0; somaTotal(); }
+	function zeradeslocamento() { document.getElementById("deslocamento").value = 0; somaTotal(); }
+</script>
+</html>
